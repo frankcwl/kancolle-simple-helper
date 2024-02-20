@@ -1,5 +1,10 @@
 from PyQt5.QtWidgets import QApplication
 import threading
+import pyautogui
+import pyscreeze
+
+pyautogui.FAILSAFE = False
+pyscreeze.USE_IMAGE_NOT_FOUND_EXCEPTION = False
 
 from util.logger import logger
 from gui.gui import GUI
