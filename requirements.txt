@@ -1,3 +1,4 @@
+opencv-python==4.9.0.80
 PyAutoGUI==0.9.54
 pynput==1.7.6
 PyQt5==5.15.10
