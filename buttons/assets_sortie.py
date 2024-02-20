@@ -1,0 +1,5 @@
+DECIDE = 'assets/sortie/DECIDE.png'
+FIGHT_START = 'assets/sortie/FIGHT_START.png'
+MAP1_1 = 'assets/sortie/MAP1-1.png'
+SORTIE = 'assets/sortie/SORTIE.png'
+SORTIE2 = 'assets/sortie/SORTIE2.png'

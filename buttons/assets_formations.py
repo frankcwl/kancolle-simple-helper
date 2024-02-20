@@ -1,0 +1,6 @@
+DIAMOND = 'assets/formations/diamond.png'
+DOUBLE_AHEAD = 'assets/formations/double_ahead.png'
+ECHELON = 'assets/formations/echelon.png'
+LINE_ABREAST = 'assets/formations/line_abreast.png'
+LINE_AHEAD = 'assets/formations/line_ahead.png'
+VANGUARD = 'assets/formations/vanguard.png'

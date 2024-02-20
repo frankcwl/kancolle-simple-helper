@@ -1,0 +1,8 @@
+ATTACK = 'assets/battle/attack.png'
+BACK = 'assets/battle/back.png'
+COMPASS = 'assets/battle/compass.png'
+NEXT = 'assets/battle/next.png'
+NIGHT_BATTLE = 'assets/battle/night_battle.png'
+NO_FIGHT = 'assets/battle/no_fight.png'
+RETREAT = 'assets/battle/retreat.png'
+SIDE_ROAD = 'assets/battle/side_road.png'

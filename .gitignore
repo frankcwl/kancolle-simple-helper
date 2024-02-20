@@ -1,0 +1,22 @@
+# vscode
+/.vscode
+
+# pycache
+__pycache__
+
+# pyinstaller
+/build
+/dist
+/*.spec
+/icon.ico
+
+# user files
+/map.json
+/log
+*.log
+
+# test files
+/pics
+/start.bat
+/test.log
+/test*.py
