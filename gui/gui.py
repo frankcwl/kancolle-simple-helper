@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QMainWindow, QDialog
 from PyQt5.QtCore import Qt, QCoreApplication
+from PyQt5.QtGui import QIcon
 
 from gui.ui_generated import Ui_MainWindow
 from gui.maps_generated import Ui_Dialog as Maps_Dialog
@@ -12,6 +13,7 @@ class ShowNodes(Nodes_Dialog, QDialog):
     def __init__(self, sea_map: SeaMap):
         super().__init__()
         self.setupUi(self)
+        self.setWindowIcon(QIcon('toolkit/icon.ico'))
         self.sea_map = sea_map
         
         self.setWindowFlags(self.windowFlags() & ~Qt.WindowContextHelpButtonHint | Qt.WindowStaysOnTopHint)
@@ -127,6 +129,7 @@ class ShowMaps(Maps_Dialog, QDialog):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.setWindowIcon(QIcon('toolkit/icon.ico'))
         
         self.setWindowFlags(self.windowFlags() & ~Qt.WindowContextHelpButtonHint | Qt.WindowStaysOnTopHint)
         
@@ -190,6 +193,7 @@ class GUI(Ui_MainWindow, QMainWindow):
         
         super().__init__()
         self.setupUi(self)
+        self.setWindowIcon(QIcon('toolkit/icon.ico'))
         self.move(1426,842)
         
         self.setWindowFlags(self.windowFlags() & ~Qt.WindowMinimizeButtonHint & ~Qt.WindowMaximizeButtonHint | Qt.WindowStaysOnTopHint)

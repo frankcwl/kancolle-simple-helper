@@ -5,10 +5,10 @@
 __pycache__
 
 # pyinstaller
+/toolkit
 /build
 /dist
 /*.spec
-/icon.ico
 
 # user files
 /map.json
