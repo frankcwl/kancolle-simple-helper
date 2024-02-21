@@ -1,4 +1,4 @@
-# kacolle-simple-helper
+# kancolle-simple-helper
 
 舰队collection简易自动化脚本
 
