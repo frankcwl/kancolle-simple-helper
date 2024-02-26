@@ -49,8 +49,9 @@ class Sortie():
             # 是否撤退
             if retreat:
                 click(RETREAT, confidence=0.8)
+            else:
+                click(ATTACK)
             click(NEXT, confidence=0.7)
-            click(ATTACK)
             click(COMPASS)
             click(BACK)
             count += 1
