@@ -1,6 +1,7 @@
 from tasks.supply import supply
 from util.util import *
 from buttons.assets_sortie import *
+from buttons.assets_map import *
 
 class BigDamageWarning(Exception):
     pass

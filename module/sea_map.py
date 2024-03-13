@@ -2,12 +2,13 @@ import json
 import shutil
 import os
 import copy
+from typing import Optional
 from util.logger import logger
 
 from module.formation import Formation
 
 class Node():
-    def __init__(self, formation: str, night: bool, side: list[int] | None = None, retreat: bool | None = None):
+    def __init__(self, formation: str, night: bool, side: Optional[list[int]] = None, retreat: Optional[bool] = None):
         self.formation = Formation.name2formation(formation)
         self.night = night
         self.side = side
@@ -21,8 +22,9 @@ class Node():
 class SeaMap():
     map_list: list['SeaMap'] = []
     
-    def __init__(self, name: str, nodes: list[Node]) -> None:
+    def __init__(self, name: str, nodes: list[Node], LBAS: Optional[list[list]] = None) -> None:
         self.name = name
+        self.LBAS = LBAS
         self.nodes = nodes
     
     def to_dict(self):
@@ -52,7 +54,7 @@ class SeaMap():
             nodes = []
             for node in map['nodes']:
                 nodes.append(Node(node['formation'], node['night'], node.get('side'), node.get('retreat')))
-            cls.map_list.append(SeaMap(map['name'], nodes))
+            cls.map_list.append(SeaMap(map['name'], nodes, map.get('LBAS')))
     
     @classmethod
     def _load_json(cls):
@@ -88,11 +90,11 @@ class SeaMap():
         return [sea_map.name for sea_map in cls.map_list]
     
     @classmethod
-    def get_nodes(cls, map_name: str) -> list[Node]:
-        return next((sea_map.nodes for sea_map in cls.map_list if sea_map.name == map_name))
+    def get_map_by_name(cls, map_name: str) -> 'SeaMap':
+        return next(sea_map for sea_map in cls.map_list if sea_map.name == map_name)
     
     @classmethod
-    def get_map(cls, map_num: int) -> 'SeaMap':
+    def get_map_by_num(cls, map_num: int) -> 'SeaMap':
         return cls.map_list[map_num]
     
     @classmethod

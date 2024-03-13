@@ -15,12 +15,19 @@ class ShowNodes(Nodes_Dialog, QDialog):
         self.setupUi(self)
         self.setWindowIcon(QIcon('toolkit/icon.ico'))
         self.sea_map = sea_map
+        self.node = Node('单纵阵', False)
+        if self.sea_map.LBAS:
+            self.LBAS_x.setValue(self.sea_map.LBAS[0])
+            self.LBAS_y.setValue(self.sea_map.LBAS[1])
         
         self.setWindowFlags(self.windowFlags() & ~Qt.WindowContextHelpButtonHint | Qt.WindowStaysOnTopHint)
         
         self.map_name.setText(self.sea_map.name)
         
         self.nodes.currentItemChanged.connect(self.node_changed)
+        self.LBAS_x.valueChanged.connect(self.LBAS_changed)
+        self.LBAS_y.valueChanged.connect(self.LBAS_changed)
+        self.set_LBAS.clicked.connect(self.set_LBAS_clicked)
         self.refresh()
         
         self.connect_all()
@@ -75,10 +82,11 @@ class ShowNodes(Nodes_Dialog, QDialog):
         self.connect_all()
     
     def formation_changed(self):
-        self.node.formation = Formation.name2formation(self.formations.currentText())
-        node_num = self.nodes.currentRow()
-        self.refresh()
-        self.nodes.setCurrentRow(node_num)
+        if self.node:
+            self.node.formation = Formation.name2formation(self.formations.currentText())
+            node_num = self.nodes.currentRow()
+            self.refresh()
+            self.nodes.setCurrentRow(node_num)
     
     def night_changed(self):
         if self.night.isChecked():
@@ -119,6 +127,19 @@ class ShowNodes(Nodes_Dialog, QDialog):
         self.side_y.setValue(side[1])
         self.set_side.setText('选取')
     
+    def LBAS_changed(self):
+        if self.LBAS_x.value() or self.LBAS_y.value():
+            self.sea_map.LBAS = [self.LBAS_x.value(), self.LBAS_y.value()]
+        else:
+            self.sea_map.LBAS = None
+    
+    def set_LBAS_clicked(self):
+        self.set_side.setText('选取中')
+        side = get_position()
+        self.LBAS_x.setValue(side[0])
+        self.LBAS_y.setValue(side[1])
+        self.set_side.setText('选取')
+    
     def refresh(self):
         self.nodes.currentItemChanged.disconnect()
         self.nodes.clear()
@@ -156,7 +177,7 @@ class ShowMaps(Maps_Dialog, QDialog):
     
     def edit_clicked(self):
         map_num = self.map_names.currentRow()
-        sea_map = SeaMap.get_map(map_num).copy()
+        sea_map = SeaMap.get_map_by_num(map_num).copy()
         dialog = ShowNodes(sea_map)
         ret = dialog.exec_()
         if ret == QDialog.Accepted:

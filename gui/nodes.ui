@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>362</width>
-    <height>424</height>
+    <height>438</height>
    </rect>
   </property>
   <property name="font">
@@ -33,6 +33,44 @@
      </item>
      <item>
       <widget class="QLineEdit" name="map_name"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <widget class="QLabel" name="LBAS_label">
+       <property name="text">
+        <string>基地航空队：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="LBAS_x">
+       <property name="maximum">
+        <number>1919</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="LBAS_y">
+       <property name="maximum">
+        <number>1079</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="set_LBAS">
+       <property name="maximumSize">
+        <size>
+         <width>70</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>选取</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
