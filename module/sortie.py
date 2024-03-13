@@ -48,6 +48,7 @@ class Sortie():
                 n = 0
                 next_formation = nodes[0].formation
                 set_formation(next_formation, nodes[0].night)
+                big_damage = False
                 if '循环' in self.map_name:
                     self.go_to_map()
             # 基地航空队
@@ -84,7 +85,7 @@ class Sortie():
             click(NEXT, confidence=0.6)
             click(COMPASS)
             click(BACK)
-            if check(BIG_DAMAGE, confidence=0.8):
+            if not big_damage and check(BIG_DAMAGE, confidence=0.8):
                 big_damage = True
         set_formation()
         
